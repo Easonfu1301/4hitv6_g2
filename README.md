@@ -136,9 +136,10 @@ git clone <your-repo>
 cd 4hitv6_g2
 # venv（Windows PowerShell）
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+.\.venv\Scripts\Activate.ps1 # 如果失败则先 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 python -m pip install --upgrade pip
-pip install -r requirements.txt && pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements.txt
 # 编辑 utils/setting.py，设置 rootpath 与 workdir ！！！！！
 python pipeline_v4.py
 ```
