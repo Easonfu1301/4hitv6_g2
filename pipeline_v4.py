@@ -12,9 +12,9 @@ from Trainning import train_filtering
 
 def main(force=False):
     pass
-    # root2csv_with_p.main()
-    # csv_preprocess_st1.main()
-    # csv_preprocess_st2.main()
+    root2csv_with_p.main()
+    csv_preprocess_st1.main()
+    csv_preprocess_st2.main()
     build_train_set.main()
 
 
