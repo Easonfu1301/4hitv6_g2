@@ -38,6 +38,9 @@ def construct_sample_var(samples, hit_df):
     n2 = hit_df.loc[samples[:, 1], ["nearest_dist"]].values
     n3 = hit_df.loc[samples[:, 2], ["nearest_dist"]].values
 
+    x3 = hit_df.loc[samples[:, 3], ["x"]].values
+    y3 = hit_df.loc[samples[:, 3], ["y"]].values
+
     data = np.concatenate([theta01.reshape(-1, 1), theta02.reshape(-1, 1), theta03.reshape(-1, 1),
                            theta12.reshape(-1, 1), theta13.reshape(-1, 1), theta23.reshape(-1, 1), n1, n2, n3,
                            samples_kind.reshape(-1, 1)], axis=1)

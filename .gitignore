@@ -44,3 +44,6 @@
 *.npy
 *.mat
 *.zip
+/work_dir2
+/work_dir
+/work_dir

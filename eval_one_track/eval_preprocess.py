@@ -98,7 +98,7 @@ def main():
 
     re = []
     with Pool(16) as p:
-        for file in file_list[900:950]:
+        for file in file_list[200:1000]:
             store_path = os.path.join(workdir, "Eval", "Pre", file.split(".csv")[0])
             os.makedirs(store_path, exist_ok=True)
             re.append(p.apply_async(process_one_evt, args=(os.path.join(workdir, "RawData", "processed_csv", file), store_path)))

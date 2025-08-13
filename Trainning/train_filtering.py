@@ -1,5 +1,6 @@
 import os.path
 
+import matplotlib.pyplot as plt
 import torch
 
 import numpy as np
@@ -99,7 +100,7 @@ def train_filtering(train_loader, valid_loader):
     val_losses = []
 
     last_loss = 1e9
-    fig = plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(11, 5))
     ax = fig.add_subplot(121)
     ax2 = fig.add_subplot(122)
     # plt.ion()
@@ -119,11 +120,23 @@ def train_filtering(train_loader, valid_loader):
         ax.plot(train_losses, '.-r', label="train")
         ax.plot(val_losses, '.-b', label="val")
         for i in range(8):
-            ax2.plot(fpr[i], tpr[i], '.-', label=str(i+1) + "hit, auc=" + str(np.round(auc(fpr[i], tpr[i]), 4)))
+            # ax2.plot(fpr[i], tpr[i], '.-', label=str(i+1) + " type, auc=" + str(np.round(auc(fpr[i], tpr[i]), 4)))
+            ax2.plot(fpr[i], tpr[i], '.-', label=f"Type {i+1}, AUC= {np.round(auc(fpr[i], tpr[i]), 4)}")
 
         ax2.plot(fpr[8], tpr[8], '.-', label="micro, auc=" + str(np.round(auc(fpr[8], tpr[8]), 4)))
-
         ax2.legend()
+
+        ax.set_xlabel("Epoch")
+        ax.set_ylabel("Loss")
+
+        ax2.set_xlabel("FPR")
+        ax2.set_ylabel("TPR")
+        ax.set_title("Loss Curve")
+        ax2.set_title("ROC Curve")
+        ax.legend()
+        plt.tight_layout()
+
+
 
         # fig.tight_layout()
         # plt.pause(0.001)
